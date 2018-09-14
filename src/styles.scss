@@ -2,55 +2,70 @@
 
 .#{$prefix}-radio {
   display: flex;
-  input {
-    cursor: pointer;
-  }
-  label {
-    margin-left: 5px;
-    cursor: pointer;
-  }
+  cursor: pointer;
 
-  &.disabled {
-    input {
-      cursor: not-allowed;
-    }
-    label {
-      margin-left: 5px;
-      color: $gray3;
-      cursor: not-allowed;
-
-      &:hover {
-        border-color: $gray3;
-      }
-    }
-  }
-}
-
-.#{$prefix}-radio-button {
   input {
     display: none;
   }
 
-  input:checked + label{
-    background-color: $primary-color;
-    border-color: $primary-color;
-    color: $white;
+  .radio-icon-wrapper {
+    position: relative;
+    width: 14px;
+    height: 14px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: $gray3;
+    border-radius: 50%;
+    margin-right: 5px;
   }
 
-  label {
-    width: 80px;
-    line-height: 38px;
-    text-align: center;
-    border-style: solid;
-    border-width: 1px;
-    border-color: $gray4;
-    border-radius: $btn-border-radius;
-    color: $gray5;
+  &.#{$prefix}-radio-checked {
+    color: $primary-color;
 
-    &:hover {
-      color: $primary-color;
+    .radio-icon-wrapper {
       border-color: $primary-color;
     }
+
+    .radio-icon-inner {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      content: '';
+      width: 8px;
+      height: 8px;
+      background-color: $primary-color;
+      border-radius: 50%;
+    }
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+    color: $gray3;
+  }
+}
+
+.#{$prefix}-radio-button {
+  width: 80px;
+  line-height: 38px;
+  text-align: center;
+  border-style: solid;
+  border-width: 1px;
+  border-color: $gray4;
+  border-radius: $btn-border-radius;
+  color: $gray5;
+
+  &:hover {
+    color: $primary-color;
+    border-color: $primary-color;
+  }
+
+  input {
+    display: none;
+  }
+
+  .label-name {
+    width: 100%;
   }
 
   &.disabled {
@@ -64,16 +79,26 @@
   }
 }
 
+.or-radio-checked {
+  &.#{$prefix}-radio-button {
+    background-color: $primary-color;
+    border-color: $primary-color;
+    border-radius: $btn-border-radius;
+    color: $white;
+  }
+}
+
+
+
 .#{$prefix}-radio-group {
-  div + div {
+  .#{$prefix}-radio-vertical + .#{$prefix}-radio-vertical {
     margin-top: 10px;
+  }
+
+  .#{$prefix}-radio-horizontal + .#{$prefix}-radio-horizontal {
+    margin-left: 10px;
   }
   &.horizontal {
     display: flex;
-
-    div + div {
-      margin-top: 0;
-      margin-left: 10px;
-    }
   }
 }
