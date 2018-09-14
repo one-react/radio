@@ -35,11 +35,12 @@ class Radio extends React.Component {
 }
 
 Radio.propTypes = {
-  children: PropTypes.children,
+  children: PropTypes.node,
   name: PropTypes.string,
   type: PropTypes.string,
   value: PropTypes.string,
   disabled: PropTypes.bool,
+  onClick: PropTypes.func,
   defaultChecked: PropTypes.bool
 }
 

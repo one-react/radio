@@ -33,7 +33,7 @@ class RadioGroup extends React.Component {
 RadioGroup.propTypes = {
   type: PropTypes.string,
   horizontal: PropTypes.bool,
-  children: PropTypes.children,
+  children: PropTypes.node,
   name: PropTypes.string
 }
 
