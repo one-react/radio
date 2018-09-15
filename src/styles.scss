@@ -2,7 +2,9 @@
 
 .#{$prefix}-radio {
   display: flex;
+  align-items: center;
   cursor: pointer;
+  font-family: $font-family;
 
   input {
     display: none;
@@ -19,6 +21,20 @@
     margin-right: 5px;
   }
 
+  .radio-icon-inner {
+    opacity: 0;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(2);
+    content: '';
+    width: 8px;
+    height: 8px;
+    background-color: $primary-color;
+    border-radius: 50%;
+    // transition: all 0.25s ease-in;
+  }
+
   &.#{$prefix}-radio-checked {
     color: $primary-color;
 
@@ -27,15 +43,9 @@
     }
 
     .radio-icon-inner {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      content: '';
-      width: 8px;
-      height: 8px;
-      background-color: $primary-color;
-      border-radius: 50%;
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+      transition: all 0.25s ease-in-out;
     }
   }
 
@@ -87,8 +97,6 @@
     color: $white;
   }
 }
-
-
 
 .#{$prefix}-radio-group {
   .#{$prefix}-radio-vertical + .#{$prefix}-radio-vertical {
