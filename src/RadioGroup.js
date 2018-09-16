@@ -24,8 +24,11 @@ class RadioGroup extends React.Component {
   }
 
   handleSelect = (value) => {
+    const {onChange} = this.props
     this.setState({
       currentSelected: value
+    }, () => {
+      onChange(this.state.currentSelected)
     })
   }
 }
@@ -35,7 +38,8 @@ RadioGroup.propTypes = {
   horizontal: PropTypes.bool,
   children: PropTypes.node,
   name: PropTypes.string,
-  defaultSelected: PropTypes.string
+  defaultSelected: PropTypes.string,
+  onChange: PropTypes.func
 }
 
 export default RadioGroup

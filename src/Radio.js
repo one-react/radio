@@ -34,8 +34,8 @@ class Radio extends React.Component {
   }
 
   handleClick = (e) => {
-    const {disabled, onClick, value} = this.props
-    if (disabled) {
+    const {disabled, onClick, value, currentSelected} = this.props
+    if (disabled || currentSelected === value) {
       e.preventDefault()
     } else {
       onClick(value)
