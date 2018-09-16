@@ -52,7 +52,6 @@ describe('test for RadioGroup', () => {
     })
 
     afterEach(() => {
-      wrapper.unmount()
       mockCallBack.mockReset()
       wrapperHorizontal.unmount()
     })
