@@ -4,43 +4,54 @@ import classNames from 'classnames'
 
 class Radio extends React.Component {
   render () {
-    const {children, name, type, value, disabled, defaultChecked} = this.props
+    const {children, name, type, value, disabled, currentSelected, horizontal} = this.props
     const radioClass = classNames({
       'or-radio': true,
-      [`or-radio-${type}`]: true,
+      'or-radio-vertical': !horizontal,
+      'or-radio-horizontal': horizontal,
+      'or-radio-button': type === 'button',
+      [`or-radio-checked`]: currentSelected === value,
       disabled
     })
 
     return (
-      <div className={radioClass}>
+      <label htmlFor={`or-radio-${value}`} className={radioClass}>
         <input
           type='radio'
           id={`or-radio-${value}`}
           name={name}
           value={value}
-          defaultChecked={defaultChecked}
           onClick={this.handleClick} />
-        <label htmlFor={`or-radio-${value}`}>{children}</label>
-      </div>
+        { type !== 'button'
+          ? <div className='radio-icon-wrapper'>
+            <div className='radio-icon-inner' />
+          </div>
+          : null
+        }
+        <div className='label-name'>{children}</div>
+      </label>
     )
   }
 
   handleClick = (e) => {
-    const {disabled, onClick, value} = this.props
-    if (disabled) {
+    const {disabled, onClick, value, currentSelected} = this.props
+    if (disabled || currentSelected === value) {
       e.preventDefault()
+    } else {
+      onClick(value)
     }
-    onClick(value)
   }
 }
 
 Radio.propTypes = {
-  children: PropTypes.children,
+  children: PropTypes.node,
   name: PropTypes.string,
   type: PropTypes.string,
   value: PropTypes.string,
   disabled: PropTypes.bool,
-  defaultChecked: PropTypes.bool
+  onClick: PropTypes.func,
+  currentSelected: PropTypes.string,
+  horizontal: PropTypes.bool
 }
 
 export default Radio

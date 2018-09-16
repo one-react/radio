@@ -4,7 +4,7 @@ import clx from 'classnames'
 
 class RadioGroup extends React.Component {
   state = {
-    currentSelected: ''
+    currentSelected: this.props.defaultSelected
   }
   render () {
     const {horizontal, children, type, name} = this.props
@@ -16,7 +16,7 @@ class RadioGroup extends React.Component {
       <div className={radioGroupClass}>
         {
           React.Children.map(children, (element) => {
-            return React.cloneElement(element, { type, name, onClick: this.handleSelect })
+            return React.cloneElement(element, { currentSelected: this.state.currentSelected, horizontal, type, name, onClick: this.handleSelect })
           })
         }
       </div>
@@ -24,8 +24,11 @@ class RadioGroup extends React.Component {
   }
 
   handleSelect = (value) => {
+    const {onChange} = this.props
     this.setState({
       currentSelected: value
+    }, () => {
+      onChange(this.state.currentSelected)
     })
   }
 }
@@ -33,8 +36,10 @@ class RadioGroup extends React.Component {
 RadioGroup.propTypes = {
   type: PropTypes.string,
   horizontal: PropTypes.bool,
-  children: PropTypes.children,
-  name: PropTypes.string
+  children: PropTypes.node,
+  name: PropTypes.string,
+  defaultSelected: PropTypes.string,
+  onChange: PropTypes.func
 }
 
 export default RadioGroup
