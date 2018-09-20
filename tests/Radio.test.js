@@ -1,5 +1,5 @@
 import React from 'react'
-import { mount, unmount } from 'enzyme'
+import { mount } from 'enzyme'
 
 import RadioGroup from '../src/RadioGroup'
 import Radio from '../src/Radio'
@@ -31,13 +31,13 @@ describe('test for RadioGroup', () => {
     })
 
     it('simulates click events', () => {
-      wrapper.find('.or-radio input').at(0).simulate('click');
+      wrapper.find('.or-radio input').at(0).simulate('click')
       expect(mockCallBack.mock.calls.length).toBe(1)
       expect(wrapper.find('.or-radio').at(0).hasClass('or-radio-checked')).toBe(true)
     })
 
     it('simulates click on disabled radio', () => {
-      wrapper.find('.or-radio input').at(3).simulate('click');
+      wrapper.find('.or-radio input').at(3).simulate('click')
       expect(mockCallBack.mock.calls.length).toBe(0)
     })
   })
