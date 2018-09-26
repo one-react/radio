@@ -1,27 +1,33 @@
 @import "~or-theme";
 
-.#{$prefix}-radio {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
+$icon-width: 14px;
+.or-radio {
   font-family: $font-family;
+  cursor: pointer;
+}
 
-  input {
-    display: none;
+.or-radio-normal {
+  position: relative;
+
+  .or-radio-lable {
+    padding-left: calc(#{$icon-width} + 8px);
+    padding-right: 8px;
   }
 
-  .radio-icon-wrapper {
-    position: relative;
-    width: 14px;
-    height: 14px;
+  .or-radio-icon-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: $icon-width;
+    height: $icon-width;
+    transform: translateY(-50%);
     border-width: 1px;
     border-style: solid;
     border-color: $gray3;
     border-radius: 50%;
-    margin-right: 5px;
   }
 
-  .radio-icon-inner {
+  .or-radio-icon-inner {
     opacity: 0;
     position: absolute;
     left: 50%;
@@ -32,81 +38,51 @@
     height: 8px;
     background-color: $primary-color;
     border-radius: 50%;
-    // transition: all 0.25s ease-in;
   }
 
-  &.#{$prefix}-radio-checked {
+  &.or-radio-checked {
     color: $primary-color;
 
-    .radio-icon-wrapper {
+    .or-radio-icon-wrapper {
       border-color: $primary-color;
     }
 
-    .radio-icon-inner {
+    .or-radio-icon-inner {
       opacity: 1;
       transform: translate(-50%, -50%) scale(1);
       transition: all 0.25s ease-in-out;
     }
   }
 
-  &.disabled {
+  &.or-radio-disabled {
     cursor: not-allowed;
-    color: $gray3;
-  }
-}
 
-.#{$prefix}-radio-button {
-  width: 80px;
-  line-height: 38px;
-  text-align: center;
-  border-style: solid;
-  border-width: 1px;
-  border-color: $gray4;
-  border-radius: $btn-border-radius;
-  color: $gray5;
-
-  &:hover {
-    color: $primary-color;
-    border-color: $primary-color;
-  }
-
-  input {
-    display: none;
-  }
-
-  .label-name {
-    width: 100%;
-  }
-
-  &.disabled {
-    label {
-      border-color: $gray3;
-      &:hover {
-        color: $gray3;
-        border-color: $gray3;
-      }
+    .or-radio-lable {
+      color: $disabled-color;
     }
   }
 }
 
-.or-radio-checked {
-  &.#{$prefix}-radio-button {
-    background-color: $primary-color;
-    border-color: $primary-color;
-    border-radius: $btn-border-radius;
-    color: $white;
+.or-radio-button {
+  display: inline-block;
+
+  &.or-radio-checked {
+    .or-btn {
+      background-color: $primary-color;
+      border-color: $primary-color;
+      color: $white;
+    }
   }
 }
 
-.#{$prefix}-radio-group {
-  .#{$prefix}-radio-vertical + .#{$prefix}-radio-vertical {
-    margin-top: 10px;
+.or-radio-group-vertical {
+  .or-radio {
+    display: block;
   }
+}
 
-  .#{$prefix}-radio-horizontal + .#{$prefix}-radio-horizontal {
-    margin-left: 10px;
-  }
-  &.horizontal {
-    display: flex;
+.or-radio-group-horizontal {
+  .or-radio {
+    display: inline-block;
   }
 }

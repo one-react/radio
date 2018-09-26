@@ -1,48 +1,64 @@
 import clx from 'classnames'
 import React, { PureComponent } from 'react'
-
 interface Props {
+  /**
+   * type for the radio
+   * @default 'normal'
+   **/
   type?: string
+
+  /**
+   * radio group layouts horizontally or vertically
+   * @default 'false'
+   **/
   horizontal?: boolean
-  children: any
-  name: string
-  defaultSelected?: string
+
+  /**
+   * children of the radio group
+   **/
+  children: React.ReactNode
+
+  /**
+   * current value of the radio group
+   **/
+  value?: string
+
+  /**
+   * custom classname
+   **/
+  classname?: string
+
+  /**
+   * callback triggered by click
+   **/
   onChange: (currentSelected) => void
 }
 export class RadioGroup extends PureComponent<Props, {}> {
-  state = {
-    currentSelected: this.props.defaultSelected
-  }
   render() {
-    const { horizontal, children, type, name } = this.props
-    const radioGroupClass = clx({
-      'or-radio-group': true,
-      horizontal
-    })
+    const { horizontal, children, type, value, classname } = this.props
+    const radioGroupClass = clx(
+      {
+        'or-radio-group-horizontal': horizontal,
+        'or-radio-group-vertical': !horizontal
+      },
+      'or-radio-group',
+      classname
+    )
     return (
       <div className={radioGroupClass}>
-        {React.Children.map(children, (element: any) => {
-          return React.cloneElement(element, {
-            currentSelected: this.state.currentSelected,
-            horizontal,
+        {React.Children.map(children, (radio: React.ReactElement<any>) => {
+          return React.cloneElement(radio, {
+            checked: value === radio.props.value,
             type,
-            name,
-            onClick: this.handleSelect
+            onClick: this.handleOnChange
           })
         })}
       </div>
     )
   }
 
-  handleSelect = value => {
+  handleOnChange = value => {
     const { onChange } = this.props
-    this.setState(
-      {
-        currentSelected: value
-      },
-      () => {
-        onChange(this.state.currentSelected)
-      }
-    )
+    onChange(value)
   }
 }

@@ -1,0 +1,15 @@
+h1 {
+  margin-top: 70px;
+}
+.or-radio-group-vertical {
+  .or-radio + .or-radio {
+    margin-top: 8px;
+  }
+}
+
+.or-radio-group-horizontal {
+  .or-radio {
+    margin-left: 8px;
+    margin-top: 10px;
+  }
+}

@@ -1,66 +1,79 @@
 import clx from 'classnames'
-import React, { MouseEvent, PureComponent } from 'react'
-
+import Button from 'or-button'
+import React, { PureComponent } from 'react'
 interface Props {
   /**
    * type for the radio
+   * @default 'normal'
    **/
   type?: 'button'
+
+  /**
+   * radio group layouts horizontally or vertically
+   * @default 'false'
+   **/
   horizontal?: boolean
-  name?: string
+
+  /**
+   * value of the radio
+   **/
   value: string
-  children: any
+
+  /**
+   * whether the radio is checked or not
+   **/
+  checked?: boolean
+
+  /**
+   * children of the radio
+   **/
+  children: React.ReactNode
+
+  /**
+   * whether the radio can be clicked
+   **/
   disabled?: boolean
+
+  /**
+   * callback triggered by click
+   **/
   onClick?: (value) => void
-  currentSelected?: string
 }
 
 export class Radio extends PureComponent<Props, {}> {
   render() {
-    const {
-      children,
-      name,
-      type,
-      value,
-      disabled,
-      currentSelected,
-      horizontal
-    } = this.props
+    const { children, type = 'normal', checked, disabled } = this.props
     const radioClass = clx(
       {
-        'or-radio-vertical': !horizontal,
-        'or-radio-horizontal': horizontal,
-        'or-radio-button': type === 'button',
-        [`or-radio-checked`]: currentSelected === value,
-        disabled
+        [`or-radio-${type}`]: type,
+        'or-radio-checked': checked,
+        'or-radio-disabled': disabled
       },
       'or-radio'
     )
-
     return (
-      <label htmlFor={`or-radio-${value}`} className={radioClass}>
-        <input
-          type="radio"
-          id={`or-radio-${value}`}
-          name={name}
-          value={value}
-          onClick={this.handleClick}
-        />
-        {type !== 'button' ? (
-          <div className="radio-icon-wrapper">
-            <div className="radio-icon-inner" />
+      <>
+        {type === 'button' ? (
+          <div className={radioClass} onClick={this.handleClick}>
+            <Button small disabled={this.props.disabled}>
+              {children}
+            </Button>
           </div>
-        ) : null}
-        <div className="label-name">{children}</div>
-      </label>
+        ) : (
+          <div className={radioClass} onClick={this.handleClick}>
+            <div className="or-radio-icon-wrapper">
+              <div className="or-radio-icon-inner" />
+            </div>
+            <span className="or-radio-lable">{children}</span>
+          </div>
+        )}
+      </>
     )
   }
 
-  handleClick = (e: MouseEvent<HTMLElement>) => {
-    const { disabled, onClick, value, currentSelected } = this.props
-    if (disabled || currentSelected === value) {
-      e.preventDefault()
-    } else {
+  handleClick = () => {
+    const { disabled, onClick, value, checked } = this.props
+    if (!disabled && !checked) {
       onClick(value)
     }
   }
