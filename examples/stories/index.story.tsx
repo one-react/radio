@@ -2,11 +2,12 @@ import { action } from '@storybook/addon-actions'
 import { withInfo } from '@storybook/addon-info'
 import { storiesOf } from '@storybook/react'
 import React, { PureComponent } from 'react'
+
 import { Radio, RadioGroup } from '../../src'
 import './styles.scss'
 
 storiesOf('or-radio', module).add(
-  'radio',
+  'RadioExample',
   withInfo({ inline: true })(() => <RadioExample />)
 )
 

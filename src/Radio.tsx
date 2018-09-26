@@ -1,23 +1,13 @@
 import clx from 'classnames'
 import Button from 'or-button'
 import React, { PureComponent } from 'react'
+
 interface Props {
   /**
    * type for the radio
    * @default 'normal'
    **/
   type?: 'button'
-
-  /**
-   * radio group layouts horizontally or vertically
-   * @default 'false'
-   **/
-  horizontal?: boolean
-
-  /**
-   * value of the radio
-   **/
-  value: string
 
   /**
    * whether the radio is checked or not
@@ -37,7 +27,7 @@ interface Props {
   /**
    * callback triggered by click
    **/
-  onClick?: (value) => void
+  onClick?: () => void
 }
 
 export class Radio extends PureComponent<Props, {}> {
@@ -52,29 +42,27 @@ export class Radio extends PureComponent<Props, {}> {
       'or-radio'
     )
     return (
-      <>
+      <div className={radioClass} onClick={this.handleClick}>
         {type === 'button' ? (
-          <div className={radioClass} onClick={this.handleClick}>
-            <Button small disabled={this.props.disabled}>
-              {children}
-            </Button>
-          </div>
+          <Button small disabled={this.props.disabled}>
+            {children}
+          </Button>
         ) : (
-          <div className={radioClass} onClick={this.handleClick}>
+          <>
             <div className="or-radio-icon-wrapper">
               <div className="or-radio-icon-inner" />
             </div>
-            <span className="or-radio-lable">{children}</span>
-          </div>
+            <span className="or-radio-label">{children}</span>
+          </>
         )}
-      </>
+      </div>
     )
   }
 
   handleClick = () => {
-    const { disabled, onClick, value, checked } = this.props
+    const { disabled, onClick, checked } = this.props
     if (!disabled && !checked) {
-      onClick(value)
+      onClick()
     }
   }
 }

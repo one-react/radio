@@ -1,5 +1,6 @@
 import clx from 'classnames'
 import React, { PureComponent } from 'react'
+
 interface Props {
   /**
    * type for the radio
@@ -9,7 +10,7 @@ interface Props {
 
   /**
    * radio group layouts horizontally or vertically
-   * @default 'false'
+   * @default false
    **/
   horizontal?: boolean
 
@@ -31,7 +32,7 @@ interface Props {
   /**
    * callback triggered by click
    **/
-  onChange: (currentSelected) => void
+  onChange: (value) => void
 }
 export class RadioGroup extends PureComponent<Props, {}> {
   render() {
@@ -50,15 +51,17 @@ export class RadioGroup extends PureComponent<Props, {}> {
           return React.cloneElement(radio, {
             checked: value === radio.props.value,
             type,
-            onClick: this.handleOnChange
+            onClick: this.handleOnClick(radio.props.value)
           })
         })}
       </div>
     )
   }
 
-  handleOnChange = value => {
-    const { onChange } = this.props
-    onChange(value)
+  handleOnClick = (value: string) => {
+    return () => {
+      const { onChange } = this.props
+      onChange(value)
+    }
   }
 }
