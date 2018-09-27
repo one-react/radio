@@ -9,7 +9,7 @@ $icon-width: 14px;
 .or-radio-normal {
   position: relative;
 
-  .or-radio-lable {
+  .or-radio-label {
     padding-left: calc(#{$icon-width} + 8px);
     padding-right: 8px;
   }
@@ -57,7 +57,7 @@ $icon-width: 14px;
   &.or-radio-disabled {
     cursor: not-allowed;
 
-    .or-radio-lable {
+    .or-radio-label {
       color: $disabled-color;
     }
   }
