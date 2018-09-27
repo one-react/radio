@@ -10,6 +10,11 @@ interface Props {
   type?: 'button'
 
   /**
+   * value of the radio
+   **/
+  value: string
+
+  /**
    * whether the radio is checked or not
    **/
   checked?: boolean
