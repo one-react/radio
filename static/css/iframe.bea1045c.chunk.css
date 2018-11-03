@@ -1,0 +1,72 @@
+.or-radio {
+  font-family: "PingFang SC", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  cursor: pointer; }
+
+.or-radio-normal {
+  position: relative; }
+  .or-radio-normal .or-radio-label {
+    padding-left: calc(14px + 8px);
+    padding-right: 8px; }
+  .or-radio-normal .or-radio-icon-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 14px;
+    height: 14px;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+    border-width: 1px;
+    border-style: solid;
+    border-color: #BDBDBD;
+    border-radius: 50%; }
+  .or-radio-normal .or-radio-icon-inner {
+    opacity: 0;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%) scale(2);
+            transform: translate(-50%, -50%) scale(2);
+    content: '';
+    width: 8px;
+    height: 8px;
+    background-color: #212121;
+    border-radius: 50%; }
+  .or-radio-normal.or-radio-checked {
+    color: #212121; }
+    .or-radio-normal.or-radio-checked .or-radio-icon-wrapper {
+      border-color: #212121; }
+    .or-radio-normal.or-radio-checked .or-radio-icon-inner {
+      opacity: 1;
+      -webkit-transform: translate(-50%, -50%) scale(1);
+              transform: translate(-50%, -50%) scale(1);
+      transition: all 0.25s ease-in-out; }
+  .or-radio-normal.or-radio-disabled {
+    cursor: not-allowed; }
+    .or-radio-normal.or-radio-disabled .or-radio-label {
+      color: #BDBDBD; }
+
+.or-radio-button {
+  display: inline-block; }
+  .or-radio-button.or-radio-checked .or-btn {
+    background-color: #212121;
+    border-color: #212121;
+    color: #fff; }
+
+.or-radio-group-vertical .or-radio {
+  display: block; }
+
+.or-radio-group-horizontal .or-radio {
+  display: inline-block; }
+
+h1 {
+  margin-top: 70px; }
+
+.or-radio-group-vertical .or-radio + .or-radio {
+  margin-top: 8px; }
+
+.or-radio-group-horizontal .or-radio {
+  margin-left: 8px;
+  margin-top: 10px; }
+
+
+/*# sourceMappingURL=iframe.bea1045c.chunk.css.map*/
