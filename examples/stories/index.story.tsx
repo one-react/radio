@@ -1,25 +1,33 @@
 import { action } from '@storybook/addon-actions'
 import { withInfo } from '@storybook/addon-info'
 import { storiesOf } from '@storybook/react'
-import React, { PureComponent } from 'react'
+import React from 'react'
+
+import { Radio, RadioGroup } from 'or-radio'
+import { previewCode } from './util'
+
+import Example from './example'
 
 import './styles.scss'
 
-import { Radio, RadioGroup } from '../../src'
-
-import RadioExample from './example'
-
-storiesOf('or-radio', module).add(
-  'RadioExample',
-  withInfo({
-    inline: true,
-    source: false,
-    propTables: [Radio, RadioGroup],
-    propTablesExclude: [RadioExample],
-    text: `
-\`\`\`
-${require('!!raw-loader!./example.tsx')}
-\`\`\`
-    `
-  })(() => <RadioExample />)
-)
+const handleClick = action('basic-click')
+storiesOf('or-radio', module)
+  .addDecorator(
+    withInfo({
+      inline: true,
+      propTables: [Radio, RadioGroup],
+      propTablesExclude: [Example],
+      styles: {
+        jsxInfoContent: {
+          borderTop: 'none',
+          margin: 0
+        }
+      }
+    })
+  )
+  .add('sample', () => <Example />, {
+    info: {
+      source: false,
+      text: previewCode(require('!!raw-loader!./example.tsx'))
+    }
+  })
