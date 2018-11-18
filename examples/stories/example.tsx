@@ -13,7 +13,7 @@ export default class RadioExample extends PureComponent {
       <div>
         <h1>radio group #horizontal</h1>
         <RadioGroup
-          classname="hello"
+          className="hello"
           horizontal
           value={this.state.value1}
           onChange={this.handleClick('value1')}
