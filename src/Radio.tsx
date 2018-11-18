@@ -49,7 +49,7 @@ export class Radio extends PureComponent<Props, {}> {
     return (
       <div className={radioClass} onClick={this.handleClick}>
         {type === 'button' ? (
-          <Button small disabled={this.props.disabled}>
+          <Button size="small" disabled={this.props.disabled}>
             {children}
           </Button>
         ) : (

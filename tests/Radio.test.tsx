@@ -56,16 +56,16 @@ describe('src/index', () => {
     })
   })
 
-  describe('custom classname', () => {
+  describe('custom className', () => {
     const wrapper = mount(
       renderRadioGroup({
-        classname: 'hello'
+        className: 'hello'
       })
     )
 
     it('should render properly', () => {
       expect(wrapper.find('.or-radio-group').length).toBe(1)
-      expect(wrapper.find('.hello').length).toBe(1)
+      expect(wrapper.find('.or-radio-group').hasClass('hello')).toBe(true)
       expect(wrapper.find('.or-radio').length).toBe(4)
     })
   })
