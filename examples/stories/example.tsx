@@ -1,5 +1,5 @@
+import { Radio, RadioGroup } from 'or-radio'
 import React, { PureComponent } from 'react'
-import { Radio, RadioGroup } from '../../src'
 
 export default class RadioExample extends PureComponent {
   state = {
