@@ -1,8 +1,12 @@
 @import "~or-theme";
 
-$icon-width: 14px;
+$or-radio-primary-color: $or-primary-color !default;
+$or-radio-disabled-color: $or-disabled-color !default;
+
+$or-icon-width: 14px;
+
 .or-radio {
-  font-family: $font-family;
+  font-family: $or-font-family;
   cursor: pointer;
 }
 
@@ -10,7 +14,7 @@ $icon-width: 14px;
   position: relative;
 
   .or-radio-label {
-    padding-left: calc(#{$icon-width} + 8px);
+    padding-left: calc(#{$or-icon-width} + 8px);
     padding-right: 8px;
   }
 
@@ -18,12 +22,12 @@ $icon-width: 14px;
     position: absolute;
     top: 50%;
     left: 0;
-    width: $icon-width;
-    height: $icon-width;
+    width: $or-icon-width;
+    height: $or-icon-width;
     transform: translateY(-50%);
     border-width: 1px;
     border-style: solid;
-    border-color: $gray3;
+    border-color: $or-gray3;
     border-radius: 50%;
   }
 
@@ -36,15 +40,15 @@ $icon-width: 14px;
     content: '';
     width: 8px;
     height: 8px;
-    background-color: $primary-color;
+    background-color: $or-radio-primary-color;
     border-radius: 50%;
   }
 
   &.or-radio-checked {
-    color: $primary-color;
+    color: $or-radio-primary-color;
 
     .or-radio-icon-wrapper {
-      border-color: $primary-color;
+      border-color: $or-radio-primary-color;
     }
 
     .or-radio-icon-inner {
@@ -58,7 +62,7 @@ $icon-width: 14px;
     cursor: not-allowed;
 
     .or-radio-label {
-      color: $disabled-color;
+      color: $or-radio-disabled-color;
     }
   }
 }
@@ -68,9 +72,9 @@ $icon-width: 14px;
 
   &.or-radio-checked {
     .or-btn {
-      background-color: $primary-color;
-      border-color: $primary-color;
-      color: $white;
+      background-color: $or-radio-primary-color;
+      border-color: $or-radio-primary-color;
+      color: white;
     }
   }
 }
