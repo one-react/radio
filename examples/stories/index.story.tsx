@@ -1,4 +1,3 @@
-import { action } from '@storybook/addon-actions'
 import { withInfo } from '@storybook/addon-info'
 import { storiesOf } from '@storybook/react'
 import React from 'react'
@@ -10,7 +9,6 @@ import Example from './example'
 
 import './styles.scss'
 
-const handleClick = action('basic-click')
 storiesOf('or-radio', module)
   .addDecorator(
     withInfo({

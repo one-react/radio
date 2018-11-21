@@ -25,9 +25,9 @@ interface Props {
   value?: string
 
   /**
-   * custom classname
+   * custom className
    **/
-  classname?: string
+  className?: string
 
   /**
    * callback triggered by click
@@ -36,14 +36,14 @@ interface Props {
 }
 export class RadioGroup extends PureComponent<Props, {}> {
   render() {
-    const { horizontal, children, type, value, classname } = this.props
+    const { horizontal, children, type, value, className } = this.props
     const radioGroupClass = clx(
       {
         'or-radio-group-horizontal': horizontal,
         'or-radio-group-vertical': !horizontal
       },
       'or-radio-group',
-      classname
+      className
     )
     return (
       <div className={radioGroupClass}>
